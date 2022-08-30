@@ -263,7 +263,7 @@
 
 ```shell
 $ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
-
+$ cd NeteaseCloudMusicApi
 $ npm install
 ```
 
@@ -1322,7 +1322,7 @@ tags: 歌单标签
 **可选参数 :** `cat`: tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为
 "全部",可从精品歌单标签列表接口获取(`/playlist/highquality/tags`)
 
-`limit`: 取出歌单数量 , 默认为 20
+`limit`: 取出歌单数量 , 默认为 50
 
 `before`: 分页参数,取上一页最后一个歌单的 `updateTime` 获取下一页数据
 
@@ -1413,6 +1413,17 @@ tags: 歌单标签
 **接口地址 :** `/song/url`
 
 **调用例子 :** `/song/url?id=33894312` `/song/url?id=405998841,33894312`
+
+### 获取音乐 url - 新版
+
+说明 : 使用注意事项同上
+
+**必选参数 :** `id` : 音乐 id
+ `level`: 播放音质等级, 分为 `standard` => `标准`, `exhigh`=>`极高`, `lossless`=>`无损`, `hires`=>`Hi-Res`
+
+**接口地址 :** `/song/url/v1`
+
+**调用例子 :** `/song/url/v1?id=33894312&level=exhigh` `/song/url/v1?id=405998841,33894312&level=lossless`
 
 ### 音乐是否可用
 
@@ -2431,14 +2442,11 @@ pc: 云盘歌曲信息，如果不存在该字段，则为非云盘歌曲
 ### 新碟上架
 
 说明 : 调用此接口 , 可获取新碟上架列表 , 如需具体音乐信息需要调用获取专辑列表接
-口 `/album` , 然后传入 id, 如 `/album?id=32311&limit=30`
+口 `/album` , 然后传入 id, 如 `/album?id=32311`
 
 **可选参数 :**
 
-`limit`: 取出数量 , 默认为 50
 
-`offset`: 偏移数量 , 用于分页 , 如 :( 页数 -1)\*50, 其中 50 为 limit 的值 , 默认
-为 0
 
 `area`: ALL:全部,ZH:华语,EA:欧美,KR:韩国,JP:日本
 
@@ -2810,7 +2818,7 @@ type : 地区
 
 **可选参数 :**
 
-`limit` : 返回数量 , 默认为 200
+`limit` : 返回数量 , 默认为 30
 
 `offset` : 偏移数量，用于分页 , 如 :( 页数 -1)\*200, 其中 200 为 limit 的值 , 默认为 0
 
